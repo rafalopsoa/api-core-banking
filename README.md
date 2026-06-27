@@ -51,3 +51,24 @@ git clone [https://github.com/SEU_USUARIO/api-core-banking.git](https://github.c
 cd api-core-banking
 npm install
 npm run dev
+
+## 🧪 Tests / Testes (E2E)
+
+```bash
+npm test
+
+## 🧪 Test Coverage / Cobertura de Testes (7 Validated Scenarios)
+
+* `[CBANK-T1]` Consultar saldo / Check balance ✅
+* `[CBANK-T2]` Bloquear limite excedido / Block overdraft ✅
+* `[CBANK-T3]` Débito efetivado / Successful debit ✅
+* `[CBANK-T4]` Bloquear conta inativa / Block inactive account ✅
+* `[CBANK-T5]` Conta inexistente (404) / Non-existent account (404) ✅
+* `[CBANK-T6]` Auditoria de transação / Transaction auditing ✅
+* `[CBANK-T7]` Falha de autenticação (401) / Auth failure (401) ✅
+
+## 📂 Documentation / Documentação
+* `Epicos_Jira.md`: BDD structure and User Stories.
+* `Execucao_Zephyr.md`: Test Cycle planning.
+* `Guia_Implementacao_TDD.md`: TDD implementation guide.
+* `Relatorio_Carreira_CoreBanking.md`: Technical career evidence.
