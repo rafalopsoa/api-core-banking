@@ -71,4 +71,4 @@ npm test
 * `Epicos_Jira.md`: BDD structure and User Stories.
 * `Execucao_Zephyr.md`: Test Cycle planning.
 * `Guia_Implementacao_TDD.md`: TDD implementation guide.
-* `Relatorio_Carreira_CoreBanking.md`: Technical career evidence.
+
