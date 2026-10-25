@@ -21,7 +21,7 @@ export class InsufficientFundsError extends DomainError{
 }
 
 export class AccountBlockedError extends DomainError{
-    constructor (){
+    constructor (accountNumber: string){
         super(`Conta ${accountNumber} está bloqueada.`);
     }
 }
