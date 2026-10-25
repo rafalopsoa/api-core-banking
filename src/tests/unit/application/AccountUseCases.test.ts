@@ -1,8 +1,8 @@
 import { DebitAccount } from '../../../application/use-cases/DebitAccount';
 import { GetBalance } from '../../../application/use-cases/GetBalance';
-import { InMemoryAccountRepository } from '../../fakes/InMemoryAccontRepository';
+import { InMemoryAccountRepository } from '../../../tests/fakes/InMemoryAccountRepository';
 import { InMemoryAuditLogRepository } from '../../fakes/InMemoryAuditLogRepository';
-import { InMemoryUnitOfWork } from '../../fakes/InMemoryUnitOfWork';
+import { InMemoryUnitOfWork } from '../../../tests/fakes/InMemoryUnitOfWork';
 
 import{
     AccountBlockedError,
