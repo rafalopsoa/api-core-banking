@@ -1,7 +1,6 @@
 import type { UnitOfWork } from '../ports/UnitOfWork';
 import { Money } from '../../domain/value-objects/Money';
 import { AccountNotFoundError, InvalidAmountError } from '../../domain/errors/DomainErrors';
-import AccountNotFoundError = require('../../domain/errors/DomainErrors');
 
 export interface DebitAccountInput {
     accountNumber: string;
@@ -17,7 +16,7 @@ export class DebitAccount {
     private readonly unitOfWork: UnitOfWork;
 
     constructor(unitOfWork: UnitOfWork) {
-        this.UnitOfWork = unitOfWork;
+        this.unitOfWork = unitOfWork;
     }
 
     async execute(input: DebitAccountInput): Promise<DebitAccountOutput>{
@@ -27,7 +26,7 @@ export class DebitAccount {
         }
 
      // Débito + auditoria na MESMA transação: ou os dois acontecem, ou nenhum.
-     return this.UnitOfWork.run(async ({ accounts, auditLogs}) => {
+     return this.unitOfWork.run(async ({ accounts, auditLog}) => {
         const account = await accounts.findByNumber(input.accountNumber);
         if(!account){
             throw new AccountNotFoundError(input.accountNumber);
@@ -35,7 +34,7 @@ export class DebitAccount {
 
         account.debit(amount);
         await accounts.save(account);
-        await auditLogs.record({ accountNumber: account.accountNumber, operation: 'DEBIT', amount });
+        await auditLog.record({ accountNumber: account.accountNumber, operation: 'DEBIT', amount });
 
         return { accountNumber: account.accountNumber, balanceInCents: account.balance.toCents() };
      });

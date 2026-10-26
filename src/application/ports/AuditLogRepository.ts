@@ -1,4 +1,4 @@
-import type { Money } from '../..domain/value-objects/Money';
+import type { Money } from '../../domain/value-objects/Money';
 
 export interface AuditEntry {
     accountNumber: string;

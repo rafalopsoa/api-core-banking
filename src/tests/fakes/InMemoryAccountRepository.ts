@@ -4,7 +4,7 @@ import { Money } from '../../domain/value-objects/Money';
 import { ConcurrencyConflictError } from '../../domain/errors/DomainErrors';
 
 interface Row {
-    balanceCents: number;
+    balanceInCents: number;
     status: string;
     version: number;
 }

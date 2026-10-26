@@ -21,7 +21,7 @@ describe('Casos de uso da conta', () => {
         accounts = new InMemoryAccountRepository();
         auditLogs = new InMemoryAuditLogRepository();
         accounts.seed('123456-7', 50_000); // R$ 500,00, status 'active'
-        debitAccount = new DebitAccount(accounts, auditLogs, new InMemoryUnitOfWork({ accounts, auditLogs }));
+        debitAccount = new DebitAccount(new InMemoryUnitOfWork({ accounts, auditLog: auditLogs }));
         getBalance = new GetBalance(accounts);
     });
 
