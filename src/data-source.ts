@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Account } from "./entity/Account";
-import { AuditLog } from "./entity/AuditLog";
+import { AuditLog } from "./infrastructure/database/AuditLog";
 
 export const AppDataSource = new DataSource({
     type: "better-sqlite3",
