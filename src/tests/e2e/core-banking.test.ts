@@ -1,6 +1,8 @@
 import "reflect-metadata";
 import request from 'supertest';
-import { AppDataSource } from '../../data-source';
+import { AppDataSource } from '../../infrastructure/database/data-source';
+import { AccountOrmEntity } from '../../infrastructure/database/AccountOrmEntity';
+import { version } from "node:os";
 
 describe('Core Banking E2E Tests', () => {
     let app: any;
@@ -12,7 +14,7 @@ describe('Core Banking E2E Tests', () => {
         await AppDataSource.initialize();
         
         // 2. Extrai os repositórios diretamente pelo nome da tabela (Forma mais segura!)
-        accountRepo = AppDataSource.getRepository("Account");
+        accountRepo = AppDataSource.getRepository(AccountOrmEntity);
         auditRepo = AppDataSource.getRepository("AuditLog");
         
         // 3. A API só é carregada AQUI dentro
@@ -26,8 +28,8 @@ describe('Core Banking E2E Tests', () => {
         await auditRepo.clear();
         
         // Injeta a massa de dados
-        await accountRepo.save({ accountNumber: '12345-6', balance: 500.00, status: 'active' });
-        await accountRepo.save({ accountNumber: '99999-9', balance: 1000.00, status: 'blocked' });
+        await accountRepo.save({ accountNumber: '12345-6', balanceInCents: 50_000, status: 'active', version: 0 });
+        await accountRepo.save({ accountNumber: '99999-9', balanceInCents: 100_000, status: 'blocked', version: 0 });
     });
 
     afterAll(async () => {

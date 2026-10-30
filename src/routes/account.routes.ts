@@ -2,7 +2,7 @@ import { Router } from 'express';
 // Importamos a instância do Controller
 import accountController from '../controllers/AccountController';
 // Importamos o Middleware de Segurança que criámos
-import { authMiddleware } from '../middlewares/auth.middleware';
+import { authMiddleware } from '../interfaces/http/middlewares/auth.middleware'; 
 
 const routes = Router();
 
